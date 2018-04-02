@@ -61,48 +61,46 @@ class Form extends React.Component {
         this.setState(state);
     }
 
+ 
     render() {
-        const { fields, showLabel, buttonTitle, onForgotPassword} = this.props;
-
+        const { fields, showLabel, buttonTitle, onForgotPassword } = this.props;
+    
         return (
-            <View style={styles.container}>
-                <View style={styles.formContainer}>
-                    {
-                        (!isEmpty(this.state.error['general'])) &&
-                        <Text style={styles.errorText}>{this.state.error['general']}</Text>
-                    }
-                    {
-                        fields.map((data, idx) => {
-                            let {key, label, placeholder, autoFocus, secureTextEntry } = data;
-                            return (
-                                <AuthTextInput  key={key}
-                                                label={label}
-                                                showLabel={showLabel}
-                                                placeholder={placeholder}
-                                                autoFocus={autoFocus}
-                                                onChangeText={(text) => this.onChange(key, text)}
-                                                secureTextEntry={secureTextEntry}
-                                                value={this.state[key]['value']}
-                                                error={this.state.error[key]}
-                                />
-                            )
-                        })
-                    }
-                </View>
-                {/* TODO: what to do with underline of forms? */}
-                <View>
-                    <Button
-                        title={buttonTitle}
-                        onPress={this.onSubmit}
-                        style={styles.button}
-                    >
-                        <Text style={styles.buttonText}>{buttonTitle}</Text>
-                    </Button>
-                </View>
+          <View style={styles.container}>
+            <View style={styles.formContainer}>
+              {!isEmpty(this.state.error["general"]) && (
+                <Text style={styles.errorText}>{this.state.error["general"]}</Text>
+              )}
+              {fields.map((data, idx) => {
+                let { key, label, placeholder, autoFocus, secureTextEntry } = data;
+                return (
+                  <AuthTextInput
+                    key={key}
+                    label={label}
+                    showLabel={showLabel}
+                    placeholder={placeholder}
+                    autoFocus={autoFocus}
+                    onChangeText={text => this.onChange(key, text)}
+                    secureTextEntry={secureTextEntry}
+                    value={this.state[key]["value"]}
+                    error={this.state.error[key]}
+                  />
+                );
+              })}
             </View>
-        )
+            <View>
+              <Button
+                title={buttonTitle}
+                onPress={this.onSubmit}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>{buttonTitle}</Text>
+              </Button>
+            </View>
+          </View>
+        );
+      }
     }
-}
 
 Form.propTypes = {
     showLabel: PropTypes.bool,

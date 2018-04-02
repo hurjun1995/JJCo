@@ -10,16 +10,17 @@ import {
   Title,
   Right
 } from "native-base";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { connect } from "react-redux";
 import { View } from "react-native";
 import styles from "./styles";
 
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
 import Form from "../../components/Form"
 
-import {actions as auth} from "../../index"
+import { actions as auth } from "../../index"
 
 const { login } = auth;
 
@@ -90,28 +91,34 @@ class Welcome extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
+      <KeyboardAwareScrollView
+        contentContainerStyle={styles.container}
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        enableOnAndroid={true}
+        scrollEnabled={false}
+      >
         <View style={styles.topContainer}>
           <Text style={styles.title}>YOLO</Text>
         </View>
-        <Content style={styles.bottomContainer}>
-          <Form
-            fields={fields}
-            showLabel={false}
-            onSubmit={this.onSubmit}
-            buttonTitle={"Sign in"}
-            error={this.state.error}
-          />
+        <Form
+          style={styles.formContainer}
+          fields={fields}
+          showLabel={false}
+          onSubmit={this.onSubmit}
+          buttonTitle={"Sign in"}
+          error={this.state.error}
+        />
+        <View style={(styles.bottomContainer, styles.formContainer)}>
           <Button iconLeft light style={styles.button}>
             <Icon name="facebook" style={styles.facebookIcon} />
             <Text uppercase={false} style={styles.buttonText}>
               Sign in with Facebook account
             </Text>
           </Button>
-        </Content>
-      </Container>
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
 
-export default connect(null, {login})(Welcome);
+export default connect(null, { login })(Welcome);
