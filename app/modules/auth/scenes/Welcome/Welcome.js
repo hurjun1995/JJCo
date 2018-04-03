@@ -1,26 +1,15 @@
 import React from "react";
-import {
-  Container,
-  Header,
-  Content,
-  Button,
-  Text,
-  Left,
-  Body,
-  Title,
-  Right
-} from "native-base";
+import { Button, Text } from "native-base";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { connect } from "react-redux";
 import { View } from "react-native";
 import styles from "./styles";
 
+import { Facebook } from 'expo';
 import { Actions } from 'react-native-router-flux';
-
 import Form from "../../components/Form"
-
-import { actions as auth } from "../../index"
+import { actions as auth, constants as c } from "../../index"
 
 const { login } = auth;
 
@@ -58,9 +47,20 @@ class Welcome extends React.Component {
       error: error
     };
 
+    this.onSignInWithFacebook = this.onSignInWithFacebook.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSuccess = this.onSuccess.bind(this);
     this.onError = this.onError.bind(this);
+  }
+
+  //get users permission authorization (ret: facebook token)
+  async onSignInWithFacebook() {
+    const options = { permissions: ['public_profile', 'email'], }
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync(c.FACEBOOK_APP_ID, options);
+
+    if (type === 'success') {
+      this.props.signInWithFacebook(token, this.onSuccess, this.onError)
+    }
   }
 
   onSubmit(data) {
@@ -70,6 +70,9 @@ class Welcome extends React.Component {
   }
 
   onSuccess({ exists, user }) {
+    // TODO: this method is called within onSubmit when login is successful!
+    // connect this to other scene later.
+
     // if (exists) Actions.Main();
     // else Actions.CompleteProfile({ user });
     console.log("sign in success!");
@@ -109,7 +112,7 @@ class Welcome extends React.Component {
           error={this.state.error}
         />
         <View style={(styles.bottomContainer, styles.formContainer)}>
-          <Button iconLeft light style={styles.button}>
+          <Button iconLeft light style={styles.button} onPress={this.onSignInWithFacebook}>
             <Icon name="facebook" style={styles.facebookIcon} />
             <Text uppercase={false} style={styles.buttonText}>
               Sign in with Facebook account
