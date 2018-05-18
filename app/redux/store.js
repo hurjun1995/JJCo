@@ -1,9 +1,17 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+/* eslint-disable import/no-extraneous-dependencies */
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "remote-redux-devtools";
+import reducers from "./rootReducer";
+import rootSaga from "./sagas";
 
-import reducers from './rootReducer'; // Import the root reducer
-
-const enhancer = compose(applyMiddleware(thunk));
+const sagaMiddleware = createSagaMiddleware();
 
 // Connect our store to the reducers
-export default createStore(reducers, enhancer);
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+sagaMiddleware.run(rootSaga);
+
+export default store;
