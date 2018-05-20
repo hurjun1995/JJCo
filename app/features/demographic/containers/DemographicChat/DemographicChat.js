@@ -1,19 +1,26 @@
 import React from "react";
-// import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-// import Icon from "react-native-vector-icons/FontAwesome";
-// import { connect } from "react-redux";
-import { View, ScrollView, Modal, Button } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import styles from "./styles";
 import MessageBox from "../../components/MessageBox";
+import AnswerBox from "../../components/AnswerBox";
 
 class DemographicChat extends React.Component {
   constructor() {
     super();
     this.state = {
       data: {
-        0: ["What is your gender?", "Male", "Female", "other"],
-        1: ["How old are you?", "blank"]
-      }
+        0: {
+          type: "multiple",
+          question: "What is your gender?",
+          options: ["Male", "Female", "other"]
+        },
+        1: {
+          type: "numberInput",
+          question: "How old are you?",
+          options: ["numberInput", "How old are you?", "blank"]
+        }
+      },
+      answerOptionsVisible: true
       // currentQuestionNumber: 2,
       // needNextQuestion: false,
       // isAnswerTableVisible: false
@@ -26,6 +33,7 @@ class DemographicChat extends React.Component {
     for (let i = 0; i < totalNumOfQuestions; i++) {
       const currentQuestion = chatData[i];
       chats.push(<MessageBox left text={currentQuestion[0]} key="0" />);
+      // TODO: make below part a modal for user input
       for (let j = 1; j < currentQuestion.length; j++) {
         chats.push(
           <MessageBox
@@ -39,27 +47,19 @@ class DemographicChat extends React.Component {
     return chats;
   };
 
-  // given: list of strings
-  // create modal of answer table
-  createAnswerTable = answers => (
-    <Modal
-      transparent
-      visible
-      // onRequestClose={() => {
-      //   alert("Modal has been closed.");
-      // }}
-    >
-      <View>{answers.map(answer => <Button title={answer} />)}</View>
-    </Modal>
-  );
-
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <MessageBox left text="***INITIAL GREETING! :)***" />
-        {this.createChats(this.state.data)}
-        {this.createAnswerTable(this.state.data[0])}
-      </ScrollView>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollviewContainer}>
+          <MessageBox left text="***INITIAL GREETING! :)***" />
+        </ScrollView>
+        {this.state.answerOptionsVisible && (
+          <View style={styles.answerBox}>
+            <Text style={styles.answerBoxText}>TAP TO RESPOND</Text>
+            <AnswerBox data={this.state.data[0]} />
+          </View>
+        )}
+      </View>
     );
   }
 }

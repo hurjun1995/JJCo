@@ -7,7 +7,7 @@ import { Font, AppLoading } from "expo";
 // import { YellowBox } from "react-native";
 // import _ from "lodash";
 
-import { AppNavigator } from "./app/config/router";
+import AppNavigator from "./app/config/router";
 import store from "./app/redux/store";
 
 const sourceSansProBlack = require("./app/assets/fonts/SourceSansPro-Black.ttf");

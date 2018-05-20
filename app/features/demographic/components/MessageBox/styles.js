@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { theme } from "../../index";
+import theme from "../../index";
 
 const { padding, windowWidth } = theme;
 
@@ -21,8 +21,7 @@ const styles = StyleSheet.create({
 
   leftMessageBox: {
     alignSelf: "flex-start",
-    backgroundColor: "#0288d1",
-    color: "white"
+    backgroundColor: "#0288d1"
   }
 });
 
