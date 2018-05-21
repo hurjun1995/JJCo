@@ -1,0 +1,53 @@
+{
+  "0": {
+    "type": "multipleVerticalAligned",
+    "question": "What is your gender?",
+    "options": ["Male", "Female", "other", "I prefer not to answer"]
+  },
+  "1": {
+    "type": "numberInput",
+    "question": "How old are you? (in years)",
+    "options": ["numberInput", "blank"]
+  },
+  "2": {
+    "type": "multipleVerticalAligned",
+    "question": "Choose one or more races that you consider yourself to be.",
+    "options": [
+      "White",
+      "Black or African",
+      "American Indian or Alaska Native",
+      "Asian",
+      "Native Hawaiian or Pacific Islander",
+      "Hispanic or Latino",
+      "Other"
+    ]
+  },
+  "3": {
+    "type": "multipleVerticalAligned",
+    "question": "What would you prefer to have more in life, time or money?",
+    "options": ["Time", "Money"]
+  },
+  "4": {
+    "type": "multipleVerticalAligned",
+    "question": "Please tell me about your Education :)",
+    "options": [
+      "Less than high school",
+      "High school graduate",
+      "Some college",
+      "2-year degree",
+      "4-year degree",
+      "Professional degree",
+      "Doctorate"
+    ]
+  },
+  "5": {
+    "type": "multipleVerticalAligned",
+    "question":
+      "Are you currently married or in a marriage-like relationship? (Please select one)",
+    "options": [
+      "Yes, I am currently married",
+      "Yes, I am currently in a marriage-like relationship",
+      "No, I am not currently married or in a marriage-like relationship"
+    ]
+  }
+}

@@ -4,11 +4,22 @@ import MultipleChoiceAnswerBox from "../MultipleChoiceAnswerBox";
 
 // given data(type, question, options), create appropriate AnswerBox
 const AnswerBox = props => {
-  switch (props.data.type) {
+  const { data, onAnswered } = props;
+  switch (data.type) {
     case "multiple":
-      return <MultipleChoiceAnswerBox options={props.data.options} />;
+      return (
+        <MultipleChoiceAnswerBox
+          options={data.options}
+          onAnswered={onAnswered}
+        />
+      );
     default:
-      return <MultipleChoiceAnswerBox options={props.data.options} />; // STUB
+      return (
+        <MultipleChoiceAnswerBox
+          options={data.options}
+          onAnswered={onAnswered}
+        />
+      ); // STUB
   }
 };
 

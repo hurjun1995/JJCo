@@ -8,11 +8,19 @@ const styles = StyleSheet.create({
     flex: 1
   },
 
-  scrollviewContainer: {
+  scrollViewOuterContainer: {
+    flex: 5
+  },
+
+  scrollViewInnerContainer: {
+    display: "flex",
+    flex: 1,
     backgroundColor: color.white
   },
 
   answerBox: {
+    display: "flex",
+    flex: 3,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
