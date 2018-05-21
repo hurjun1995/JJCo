@@ -9,28 +9,6 @@ const surveyData = require("../../../../assets/data/surveyQuestions.json");
 class DemographicChat extends React.Component {
   constructor() {
     super();
-    // this.state = {
-    //   survey: {
-    //     0: {
-    //       type: "multiple",
-    //       question: "What is your gender?",
-    //       options: ["Male", "Female", "other"]
-    //     },
-    //     1: {
-    //       type: "numberInput",
-    //       question: "How old are you?",
-    //       options: ["numberInput", "blank"]
-    //     }
-    //   },
-    //   messagesToRender: {
-    //     0: {
-    //       question: "What is your gender?",
-    //       answer: ""
-    //     }
-    //   },
-    //   isAnswerTableVisible: true,
-    //   currentQuestionNumber: 0
-    // };
 
     this.addNewQuestion = this.addNewQuestion.bind(this);
   }
