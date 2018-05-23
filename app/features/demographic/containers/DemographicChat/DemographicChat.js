@@ -70,15 +70,18 @@ class DemographicChat extends React.Component {
     return arrayOfMessageBox;
   };
 
+  // TODO: Need a function to save the answers to database
+
   render() {
     const { survey, currentQuestionNumber } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.scrollViewOuterContainer}>
-          <ScrollView contentContainerStyle={styles.scrollViewInnerContainer}>
-            {this.generateMessages(this.state.messagesToRender)}
-          </ScrollView>
-        </View>
+        <ScrollView
+          style={styles.scrollViewOuterContainer}
+          contentContainerStyle={styles.scrollViewInnerContainer}
+        >
+          {this.generateMessages(this.state.messagesToRender)}
+        </ScrollView>
         {this.state.isAnswerTableVisible && (
           <View style={styles.answerBox}>
             <Text style={styles.answerBoxText}>TAP TO RESPOND</Text>

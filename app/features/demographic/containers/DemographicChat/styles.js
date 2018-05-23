@@ -9,18 +9,15 @@ const styles = StyleSheet.create({
   },
 
   scrollViewOuterContainer: {
-    flex: 5
+    backgroundColor: color.white
   },
 
   scrollViewInnerContainer: {
-    display: "flex",
-    flex: 1,
     backgroundColor: color.white
   },
 
   answerBox: {
     display: "flex",
-    flex: 3,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
@@ -30,7 +27,8 @@ const styles = StyleSheet.create({
 
   answerBoxText: {
     color: "rgba(0, 0, 0, 0.3)",
-    marginVertical: 3
+    marginVertical: 5,
+    fontSize: 8
   }
 });
 

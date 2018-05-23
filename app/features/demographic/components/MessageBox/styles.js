@@ -11,17 +11,26 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     marginHorizontal: 10,
     borderRadius: 20,
-    paddingVertical: padding * 4 / 3 - 3,
-    paddingHorizontal: padding * 4 / 3
+    paddingVertical: padding * 4 / 3 - 1,
+    paddingHorizontal: padding * 4 / 3 + 2
   },
+
   rightMessageBox: {
     alignSelf: "flex-end",
-    backgroundColor: "#f5f5f5"
+    backgroundColor: "#E0E0E0"
   },
 
   leftMessageBox: {
     alignSelf: "flex-start",
-    backgroundColor: "#0288d1"
+    backgroundColor: "#1976D2"
+  },
+
+  leftMessageBoxText: {
+    color: "white"
+  },
+
+  rightMessageBoxText: {
+    color: "black"
   }
 });
 

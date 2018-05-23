@@ -49,5 +49,15 @@
       "Yes, I am currently in a marriage-like relationship",
       "No, I am not currently married or in a marriage-like relationship"
     ]
+  },
+  "6": {
+    "type": "multipleVerticalAligned",
+    "question":
+      "Are you currently married or in a marriage-like relationship? (Please select one)",
+    "options": [
+      "Yes, I am currently married",
+      "Yes, I am currently in a marriage-like relationship",
+      "No, I am not currently married or in a marriage-like relationship"
+    ]
   }
 }

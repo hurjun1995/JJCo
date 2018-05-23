@@ -8,10 +8,13 @@ import styles from "./styles";
 // set left = true to align the box to the left
 const MessageBox = props => {
   const { text, left } = props;
-  const textStyle = left ? styles.leftMessageBox : styles.rightMessageBox;
+  const boxStyle = left ? styles.leftMessageBox : styles.rightMessageBox;
+  const textStyle = left
+    ? styles.leftMessageBoxText
+    : styles.rightMessageBoxText;
   return (
-    <View style={[styles.container, textStyle]}>
-      <Text>{text}</Text>
+    <View style={[styles.container, boxStyle]}>
+      <Text style={textStyle}>{text}</Text>
     </View>
   );
 };
